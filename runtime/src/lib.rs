@@ -38,8 +38,8 @@ pub use frame_support::{
 use frame_system::{	EnsureOneOf, EnsureRoot
 };
 
-pub use pallet_balances::Call as BalancesCall;
-pub use pallet_timestamp::Call as TimestampCall;
+// pub use pallet_balances::Call as BalancesCall;
+// pub use pallet_timestamp::Call as TimestampCall;
 use pallet_transaction_payment::CurrencyAdapter;
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
@@ -55,6 +55,9 @@ pub use pallet_template;
 
 ///Import treasury pallet
 pub use pallet_treasury;
+
+///Import frational-nft pallet
+pub use pallet_fractional_nft;
 
 /// An index to a block.
 // pub type BlockNumber = u32;
