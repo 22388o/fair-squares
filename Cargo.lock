@@ -3812,13 +3812,17 @@ name = "pallet-fractional-nft"
 version = "3.0.0-monthly-2021-10"
 dependencies = [
  "frame-benchmarking",
+ "frame-executive",
  "frame-support",
  "frame-system",
+ "frame-system-benchmarking",
+ "pallet-balances",
  "parity-scale-codec",
  "scale-info",
  "sp-core",
  "sp-io",
  "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
