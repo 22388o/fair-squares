@@ -16,9 +16,9 @@ targets = ['x86_64-unknown-linux-gnu']
 orml-nft = {version = "0.4.1-dev",path='../pallets/nft', default-features = false}
 
 
-[dependencies.pallet-template]
+[dependencies.pallet-fs]
 default-features = false
-path = '../pallets/template'
+path = '../pallets/fs'
 version = '4.0.0-dev'
 
 [build-dependencies.substrate-wasm-builder]
@@ -222,7 +222,7 @@ runtime-benchmarks = [
     'frame-system/runtime-benchmarks',
     'hex-literal',
     'pallet-balances/runtime-benchmarks',
-    'pallet-template/runtime-benchmarks',
+    'pallet-fs/runtime-benchmarks',
     'pallet-timestamp/runtime-benchmarks',
     'sp-runtime/runtime-benchmarks',
 	"pallet-treasury/runtime-benchmarks",
@@ -242,7 +242,7 @@ std = [
     'pallet-grandpa/std',
     'pallet-randomness-collective-flip/std',
     'pallet-sudo/std',
-    'pallet-template/std',
+    'pallet-fs/std',
     'pallet-timestamp/std',
     'pallet-transaction-payment-rpc-runtime-api/std',
     'pallet-transaction-payment/std',
