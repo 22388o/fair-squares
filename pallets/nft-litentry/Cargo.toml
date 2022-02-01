@@ -1,0 +1,46 @@
+[package]
+name = 'pallet-nft'
+version = '0.0.1'
+authors = ['Litentry Dev']
+description = 'FRAME nft pallet'
+edition = '2018'
+homepage = 'https://litentry.com'
+license = 'Unlicense'
+repository = 'https://github.com/litentry/litentry-pallets'
+
+[dependencies]
+serde = { version = "1.0.124", optional = true }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false }
+enumflags2 = { version = "0.6.3" }
+
+frame-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest", optional = true }
+frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+frame-system = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+sp-runtime = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+sp-std = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+sp-core = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+sp-io = { version = "4.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+
+orml-nft = { git = "https://github.com/open-web3-stack/open-runtime-module-library", default-features = false, rev = "63b32194e7b9aff6a6350d2d4434525de4eec7c1" }
+orml-traits = { git = "https://github.com/open-web3-stack/open-runtime-module-library", default-features = false, rev = "63b32194e7b9aff6a6350d2d4434525de4eec7c1" }
+
+[dev-dependencies]
+sp-core = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+pallet-balances = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+pallet-utility = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+
+[features]
+default = ["std"]
+std = [
+	"serde",
+	"codec/std",
+	"enumflags2/serde",
+	"sp-std/std",
+	"sp-io/std",
+	"sp-runtime/std",
+	"frame-support/std",
+	"frame-system/std",
+	"orml-traits/std",
+	"orml-nft/std",
+]
+runtime-benchmarks = ["frame-benchmarking"]
