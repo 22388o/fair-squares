@@ -1,5 +1,5 @@
 [package]
-name = 'fs-node'
+name = 'node-fs'
 version = '4.0.0-dev'
 description = 'Fair housing for all in a substrate-node'
 authors = ['Fair Squares <hello@fair-squares.nl>']
@@ -11,7 +11,7 @@ repository = 'https://github.com/Fair-Squares/fair-squares'
 build = 'build.rs'
 
 [[bin]]
-name = 'fs-node'
+name = 'node-fs'
 
 [package.metadata.docs.rs]
 targets = ['x86_64-unknown-linux-gnu']
@@ -53,7 +53,7 @@ frame-benchmarking = { version = "4.0.0-dev", git = "https://github.com/parityte
 frame-benchmarking-cli = { version = "4.0.0-dev", git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
 
 # Local Dependencies
-node-template-runtime = { version = "4.0.0-dev", path = "../runtime" }
+node-fs-runtime = { version = "4.0.0-dev", path = "../runtime" }
 
 [build-dependencies]
 substrate-build-script-utils = { version = "3.0.0", git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
@@ -61,5 +61,5 @@ substrate-build-script-utils = { version = "3.0.0", git = "https://github.com/pa
 [features]
 default = []
 runtime-benchmarks = [
-	"node-template-runtime/runtime-benchmarks",
+	"node-fs-runtime/runtime-benchmarks",
 ]
