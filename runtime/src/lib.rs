@@ -6,6 +6,7 @@
 #[cfg(feature = "std")]
 include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 
+use frame_support::tests::Config;
 use pallet_grandpa::{
 	fg_primitives, AuthorityId as GrandpaId, AuthorityList as GrandpaAuthorityList,
 };
@@ -51,7 +52,6 @@ pub use node_primitives::{AccountIndex, Balance, BlockNumber, Hash, Index, Momen
 
 /// Import the template pallet.
 pub use pallet_fs;
-
 ///Import treasury pallet
 pub use pallet_treasury;
 
@@ -316,16 +316,39 @@ parameter_types!{
 	pub const MaxTokenMetadata: u32=10;
 }
 
+impl nft::Config for Runtime {
+	type Currency = Balances;
+	type Event = Event;
+	type WeightInfo = ();
+	type ClassCreationFee = ClassCreationFee;
+	type Pot = Pot;
+}
+
+parameter_types! {
+	pub const MaxClassMetadata: u32 = 1024;
+	pub const MaxTokenMetadata: u32 = 1024;
+}
 
 impl orml_nft::Config for Runtime {
-	type Event = Event;
-	type ClassId = u64;
+	type ClassId = u32;
 	type TokenId = u64;
-	type ClassData = u32;
-	type TokenData = u32;
+	type ClassData = ClassData<BlockNumberOf<Self>, ClassIdOf<Self>>;
+	type TokenData = TokenData;
 	type MaxClassMetadata = MaxClassMetadata;
-	type MaxTokenMetadata =MaxTokenMetadata;
+	type MaxTokenMetadata = MaxTokenMetadata;
 }
+
+pub type NftError = nft::Error<Test>;
+
+// impl orml_nft::Config for Runtime {
+// 	type Event = Event;
+// 	type ClassId = u64;
+// 	type TokenId = u64;
+// 	type ClassData = u32;
+// 	type TokenData = u32;
+// 	type MaxClassMetadata = MaxClassMetadata;
+// 	type MaxTokenMetadata =MaxTokenMetadata;
+// }
 
 parameter_types! {
 	pub const CouncilMotionDuration: BlockNumber = 5 * DAYS;
@@ -409,7 +432,8 @@ construct_runtime!(
 		FsModule: pallet_fs::{Pallet, Call, Storage, Event<T>},
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Event<T>},
 		Council: pallet_collective::<Instance1>::{Pallet, Call, Storage, Origin<T>, Event<T>, Config<T>},
-		NFT: orml_nft::{Pallet, Call,Storage, Config<T>,Event<T>},
+		NFT: pallet_nft::{Pallet, Call, Storage, Config<T>, Event<T>},
+		// NFTo: orml_nft::{Pallet, Call,Storage, Config<T>,Event<T>},
 
 	}
 );

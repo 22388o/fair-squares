@@ -83,13 +83,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "anmol-utils"
-version = "0.1.0"
-dependencies = [
- "sp-std 3.0.0",
-]
-
-[[package]]
 name = "ansi_term"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3449,12 +3442,12 @@ dependencies = [
  "frame-system-rpc-runtime-api",
  "hex-literal",
  "node-primitives",
- "orml-nft 0.4.1-dev",
  "pallet-aura",
  "pallet-balances",
  "pallet-collective",
  "pallet-fs",
  "pallet-grandpa",
+ "pallet-nft",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
  "pallet-timestamp",
@@ -3654,23 +3647,6 @@ checksum = "ff011a302c396a5197692431fc1948019154afc178baf7d8e37367442a4601cf"
 [[package]]
 name = "orml-nft"
 version = "0.4.1-dev"
-dependencies = [
- "anmol-utils",
- "frame-support 4.0.0-dev (git+https://github.com/paritytech/substrate.git?tag=devhub/latest)",
- "frame-system 4.0.0-dev (git+https://github.com/paritytech/substrate.git?tag=devhub/latest)",
- "log",
- "parity-scale-codec",
- "scale-info",
- "serde",
- "sp-core 4.0.0-dev",
- "sp-io 4.0.0-dev",
- "sp-runtime 4.0.0-dev",
- "sp-std 4.0.0-dev",
-]
-
-[[package]]
-name = "orml-nft"
-version = "0.4.1-dev"
 source = "git+https://github.com/open-web3-stack/open-runtime-module-library?rev=63b32194e7b9aff6a6350d2d4434525de4eec7c1#63b32194e7b9aff6a6350d2d4434525de4eec7c1"
 dependencies = [
  "frame-support 4.0.0-dev (git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.16)",
@@ -3793,7 +3769,6 @@ dependencies = [
  "frame-benchmarking",
  "frame-support 4.0.0-dev (git+https://github.com/paritytech/substrate.git?tag=devhub/latest)",
  "frame-system 4.0.0-dev (git+https://github.com/paritytech/substrate.git?tag=devhub/latest)",
- "orml-nft 0.4.1-dev",
  "pallet-nft",
  "parity-scale-codec",
  "scale-info",
@@ -3833,11 +3808,12 @@ dependencies = [
  "frame-benchmarking",
  "frame-support 4.0.0-dev (git+https://github.com/paritytech/substrate.git?tag=devhub/latest)",
  "frame-system 4.0.0-dev (git+https://github.com/paritytech/substrate.git?tag=devhub/latest)",
- "orml-nft 0.4.1-dev (git+https://github.com/open-web3-stack/open-runtime-module-library?rev=63b32194e7b9aff6a6350d2d4434525de4eec7c1)",
+ "orml-nft",
  "orml-traits",
  "pallet-balances",
  "pallet-utility",
  "parity-scale-codec",
+ "scale-info",
  "serde",
  "sp-core 4.0.0-dev",
  "sp-io 4.0.0-dev",
@@ -6773,12 +6749,6 @@ dependencies = [
  "trie-db 0.23.0",
  "trie-root 0.17.0",
 ]
-
-[[package]]
-name = "sp-std"
-version = "3.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "35391ea974fa5ee869cb094d5b437688fbf3d8127d64d1b9fed5822a1ed39b12"
 
 [[package]]
 name = "sp-std"

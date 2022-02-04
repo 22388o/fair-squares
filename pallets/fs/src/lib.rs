@@ -1,11 +1,6 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
 pub use pallet::*;
-///Kazu:Importing needed types from the NFT pallet
-type ClassData<T> = <T as orml_nft::Config>::ClassData;
-type TokenData<T> = <T as orml_nft::Config>::TokenData;
-type TokenId<T> = <T as orml_nft::Config>::TokenId;
-type ClassId<T> = <T as orml_nft::Config>::ClassId;
 
 #[cfg(test)]
 mod mock;
@@ -38,16 +33,19 @@ pub mod pallet {
 	
 	/// Configure the pallet by specifying the parameters and types on which it depends.
 	#[pallet::config]
-	pub trait Config: frame_system::Config + orml_nft::Config  {
+	pub trait Config: frame_system::Config + pallet_nft::Config  {
 		/// Because this pallet emits events, it depends on the runtime's definition of an event.
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 		type Currency: ReservableCurrency<Self::AccountId>;
 		type SubmissionDeposit: Get<BalanceOf<Self>>;
 		type MinContribution: Get<BalanceOf<Self>>;
+		type Currency: Currency<Self::AccountId>;
+		type Event: From<Event<Self>> + IsType<<Self as Config>::Event>;
+		type WeightInfo: WeightInfo;
+		type ClassCreationFee: Get<BalanceOf<Self>>;
+		type Pot: Get<Self::AccountId>;	
 		// type RetirementPeriod: Get<Self::BlockNumber>;
 	}
-
-
 
 	///Kazu:the struct below is used for project's proposal's: Houses, Business, land, etc..
 	///Kazu:the proposal is linked to a NFT which represents the proposal contract 
@@ -184,25 +182,25 @@ pub mod pallet {
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 
-		/// Kazu:Create a new Proposal
-		#[pallet::weight(10_000)]
-		pub fn create_prop(
-			origin: OriginFor<T>,
-			powner0: AccountIdOf<T>,
-			value: BalanceOf<T>,			
-			_cdatas:ClassData<T>, //Kazu: Added ClassData parameter from orml_nft pallet
-			_tdatas:TokenData<T> //Kazu: Added TokenData parameter from orml_nft pallet
-		) -> DispatchResultWithPostInfo {
-			let creator = ensure_signed(origin)?;
-			let now = <frame_system::Pallet<T>>::block_number();
+		// /// Kazu:Create a new Proposal
+		// #[pallet::weight(10_000)]
+		// pub fn create_prop(
+		// 	origin: OriginFor<T>,
+		// 	powner0: AccountIdOf<T>,
+		// 	value: BalanceOf<T>,			
+		// 	_cdatas:ClassData<T>, //Kazu: Added ClassData parameter from orml_nft pallet
+		// 	_tdatas:TokenData<T> //Kazu: Added TokenData parameter from orml_nft pallet
+		// ) -> DispatchResultWithPostInfo {
+		// 	let creator = ensure_signed(origin)?;
+		// 	let now = <frame_system::Pallet<T>>::block_number();
 			
-			let deposit = T::SubmissionDeposit::get();
-			let imb = T::Currency::withdraw(
-				&creator,
-				deposit,
-				WithdrawReasons::TRANSFER,
-				ExistenceRequirement::AllowDeath,
-			)?;
+		// 	let deposit = T::SubmissionDeposit::get();
+		// 	let imb = T::Currency::withdraw(
+		// 		&creator,
+		// 		deposit,
+		// 		WithdrawReasons::TRANSFER,
+		// 		ExistenceRequirement::AllowDeath,
+		// 	)?;
 
 
 			//Kazu: I need to understand what goes in metadata and data parameters. For now I use a dummy vector for metada, and I create a NFT
@@ -212,8 +210,8 @@ pub mod pallet {
 			let mut powner= <ContIndex<T>>::new();
 			powner.push(powner0);
 			
-			let class_id = orml_nft::Pallet::<T>::create_class(&powner[0],vv,Default::default())?;
-			let token_id = orml_nft::Pallet::<T>::mint(&powner[0],class_id,vv2,Default::default())?;
+			// let class_id = orml_nft::Pallet::<T>::create_class(&powner[0],vv,Default::default())?;
+			// let token_id = orml_nft::Pallet::<T>::mint(&powner[0],class_id,vv2,Default::default())?;
 			let balance:BalanceOf<T> = Zero::zero();
 			let funded:Bool = false;
 			let index = <PropCount<T>>::get();
@@ -368,7 +366,7 @@ pub mod pallet {
 				});
 
 					
-				let _class_id = orml_nft::Pallet::<T>::transfer(&powner,&i,(prop.class_id,prop.token_id),perc);
+				// let _class_id = orml_nft::Pallet::<T>::transfer(&powner,&i,(prop.class_id,prop.token_id),perc);
 			}
 
 
@@ -480,5 +478,5 @@ pub mod pallet {
 		//T::PalletId::get().into_account()
 	//}
 }
-	}
+
 

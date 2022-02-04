@@ -56,7 +56,6 @@ pub mod weights;
 mod impl_nonfungibles;
 pub mod merkle_proof;
 
-pub use pallet::*;
 pub use weights::WeightInfo;
 
 pub type CID = Vec<u8>;
