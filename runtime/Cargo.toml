@@ -1,6 +1,6 @@
 [package]
 name = "node-fs-runtime"
-version = "4.0.0-dev"
+version = "0.0.1-dev"
 description = "A FRAME-based Substrate runtime, readying FS for fair housing."
 authors = ["FS Devs <https://fair-squares.nl"]
 homepage = "https://fair-squares.nl"
@@ -13,53 +13,51 @@ repository = "https://github.com/Fair-Squares/fair-squares"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "2.3.0", default-features = false, features = ["derive", "max-encoded-len"] }
 scale-info = { version = "1.0", default-features = false, features = ["derive"] }
 
-pallet-aura = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-balances = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-grandpa = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-randomness-collective-flip = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-sudo = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-frame-system = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-timestamp = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-transaction-payment = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-frame-executive = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-block-builder = {  version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest"}
-sp-consensus-aura = { version = "0.10.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-core = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-inherents = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest"}
-sp-offchain = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-runtime = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-session = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-std = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-transaction-pool = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-sp-version = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-collective = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-node-primitives = { version = "2.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest"}
-pallet-treasury = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest"}
+pallet-aura = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-balances = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+frame-support = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-grandpa = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-randomness-collective-flip = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-sudo = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+frame-system = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-timestamp = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-transaction-payment = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+frame-executive = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-api = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-block-builder = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-consensus-aura = { version = "0.10.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-core = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-inherents = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-offchain = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-runtime = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-session = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-std = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-transaction-pool = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+sp-version = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-collective = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+node-primitives = { version = "2.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-treasury = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
 
 
 # Used for the node template's RPCs
-frame-system-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
-pallet-transaction-payment-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+frame-system-rpc-runtime-api = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
+pallet-transaction-payment-rpc-runtime-api = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
 
 # Used for runtime benchmarking
-frame-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest", optional = true }
-frame-system-benchmarking = { version = "4.0.0-dev", default-features = false, git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest", optional = true }
+frame-benchmarking = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16", optional = true }
+frame-system-benchmarking = {default-features = false, git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16", optional = true }
 hex-literal = { version = "0.3.4", optional = true }
 
 # Local Dependencies
-pallet-fs = { version = "4.0.0-dev", default-features = false, path = "../pallets/fs" }
-orml-nft = {version = "0.4.1-dev", default-features = false, path='../pallets/nft'}
-# pallet-nft = {version = "0.0.1", default-features = false, path="'../pallets/nft-litentry"}
-
+pallet-fs = {default-features = false, path = "../pallets/fs" }
+pallet-nft = { default-features = false, path="../pallets/nft"}
 
 
 [build-dependencies]
-substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", tag = "devhub/latest" }
+substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.16"}
 
 [features]
 default = ["std"]
@@ -93,8 +91,7 @@ std = [
    	"pallet-treasury/std",
 	"pallet-collective/std",
 	"node-primitives/std",
-	"orml-nft/std",
-	# "pallet-nft/std",
+	"pallet-nft/std",
 
 ]
 runtime-benchmarks = [
